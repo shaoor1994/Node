@@ -37,7 +37,8 @@ const server = http.createServer((req, res) => {
       req.on('end', () => {
         const parsedBody = Buffer.concat(body).toString();
         const message = parsedBody.split('=')[1];
-        fs.writeFileSync('message.txt', message);
+       // fs.writeFileSync('message.txt', message); // Blocking Function
+       fs.writeFileSync('message.txt', message);
       });
       res.statusCode = 302; // it is used to redirect user 
       res.setHeader('Location', '/');
